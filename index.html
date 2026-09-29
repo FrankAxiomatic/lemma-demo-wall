@@ -34,7 +34,7 @@
 <header>
   <p class="eyebrow">Lemma · Demo Videos</p>
   <h1>Demo Wall</h1>
-  <p class="sub">28 clips, 1080p, looping. Click any to enlarge. Total 94 MB.</p>
+  <p class="sub">27 clips, 1080p, looping. Click any to enlarge. Total 94 MB.</p>
 </header>
 <main class="grid" id="grid">
     <figure class="card" tabindex="0" role="button" aria-label="Enlarge Build an Interactive Physics Model" data-src="Interactive physics model.mp4" data-slug="build-an-interactive-physics-model" data-title="Build an Interactive Physics Model">
@@ -44,10 +44,6 @@
     <figure class="card" tabindex="0" role="button" aria-label="Enlarge Fourier Series Draws the Logo" data-src="lemma-fourier-logo-jacob-no-music.mp4" data-slug="fourier-series-draws-the-logo" data-title="Fourier Series Draws the Logo">
       <div class="frame"><video src="lemma-fourier-logo-jacob-no-music.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
       <figcaption><span class="t">Fourier Series Draws the Logo</span><span class="tag">Showcase</span></figcaption>
-    </figure>
-    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Lemma in Action" data-src="Screen Recording 2026-09-23 at 14.59.10.mp4" data-slug="lemma-in-action" data-title="Lemma in Action">
-      <div class="frame"><video src="Screen Recording 2026-09-23 at 14.59.10.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
-      <figcaption><span class="t">Lemma in Action</span><span class="tag">Showcase</span></figcaption>
     </figure>
     <figure class="card" tabindex="0" role="button" aria-label="Enlarge Astro: Plan &amp; Approve" data-src="sergio-07-lemma_astro_plan_and_approve.mp4" data-slug="astro-plan-approve" data-title="Astro: Plan &amp; Approve">
       <div class="frame"><video src="sergio-07-lemma_astro_plan_and_approve.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
@@ -154,18 +150,31 @@
   <button class="close" id="lbClose" aria-label="Close">&times;</button>
   <video id="lbVid" loop playsinline controls></video>
   <div class="cap" id="lbCap"></div>
+  <div class="share" id="lbShare">
+    <button id="lbCopy" type="button">Copy GIF link</button>
+    <a id="lbDl" download>Download GIF</a>
+    <span class="msg" id="lbMsg"></span>
+  </div>
   <div class="hint">Click outside or press Esc to close</div>
 </div>
 <script>
   (function(){
     var lb=document.getElementById('lb'), vid=document.getElementById('lbVid'),
         cap=document.getElementById('lbCap'), grid=document.getElementById('grid');
+    var copyBtn=document.getElementById('lbCopy'), dlLink=document.getElementById('lbDl'), msg=document.getElementById('lbMsg'), curGif='';
+    function setGif(c){ var name=c.getAttribute('data-src').replace(/\.mp4$/,''); var rel='gifs/'+name+'.gif';
+      curGif=new URL(rel, location.href).href; dlLink.href=rel; dlLink.setAttribute('download', name+'.gif'); msg.textContent=''; }
+    copyBtn.addEventListener('click', function(e){ e.stopPropagation();
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(curGif).then(function(){msg.textContent='Link copied';setTimeout(function(){msg.textContent='';},1800);}).catch(function(){ prompt('Copy this GIF link:', curGif); }); }
+      else { prompt('Copy this GIF link:', curGif); } });
+    dlLink.addEventListener('click', function(e){ e.stopPropagation(); });
+
     var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target.querySelector('video');if(!v)return;
       if(e.isIntersecting){v.play().catch(function(){});}else{v.pause();}});},{rootMargin:'200px'});
     document.querySelectorAll('.card').forEach(function(c){io.observe(c);});
     function open(c, fromHash){
       vid.src=c.getAttribute('data-src'); cap.textContent=c.getAttribute('data-title');
-      lb.classList.add('open'); document.body.style.overflow='hidden'; vid.muted=false; vid.play().catch(function(){});
+      lb.classList.add('open'); document.body.style.overflow='hidden'; vid.muted=false; setGif(c); vid.play().catch(function(){});
       var sl=c.getAttribute('data-slug'); if(sl && !fromHash){ try{history.replaceState(null,'','#'+sl);}catch(e){location.hash=sl;} }
     }
     function close(){ lb.classList.remove('open'); vid.pause(); vid.removeAttribute('src'); vid.load(); document.body.style.overflow='';

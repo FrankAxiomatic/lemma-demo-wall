@@ -1,0 +1,164 @@
+<title>Lemma Demo Wall</title>
+<meta name="description" content="Deduplicated wall of Lemma demo GIFs.">
+<style>
+  :root{--bg:#f7f7f4;--panel:#fff;--ink:#161616;--muted:#6b6f76;--hair:#e6e6e1;--accent:#139d13;--chip:#eef4ee;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--bg:#121311;--panel:#1b1c1a;--ink:#f1f1ec;--muted:#a0a49b;--hair:#2b2d29;--accent:#7bbf6f;--chip:#1f271d;}}
+  :root[data-theme=dark]{color-scheme:dark;--bg:#121311;--panel:#1b1c1a;--ink:#f1f1ec;--muted:#a0a49b;--hair:#2b2d29;--accent:#7bbf6f;--chip:#1f271d;}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  header{padding:34px clamp(16px,4vw,48px) 12px}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+  h1{font-size:clamp(26px,4vw,40px);margin:0 0 6px;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:14px;margin:0}
+  .grid{display:grid;gap:18px;padding:18px clamp(16px,4vw,48px) 56px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+  .card{margin:0;background:var(--panel);border:1px solid var(--hair);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;
+    cursor:zoom-in;transition:transform .12s ease,box-shadow .12s ease}
+  .card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.14)}
+  .card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .frame{background:#000;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .frame img{width:100%;height:100%;object-fit:contain;display:block}
+  figcaption{padding:11px 13px;border-top:1px solid var(--hair);display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .t{font-size:14.5px;font-weight:600}
+  .tag{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);
+    background:var(--chip);border-radius:999px;padding:3px 9px;white-space:nowrap}
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;
+    flex-direction:column;gap:10px;padding:12px;z-index:50;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{width:98vw;height:88vh;object-fit:contain;border-radius:8px;image-rendering:auto;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);background:#000}
+  .lb .cap{color:#fff;font-size:16px;font-weight:600;text-align:center}
+  .lb .close{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:18px;color:#fff;background:rgba(255,255,255,.12);
+    border:0;width:40px;height:40px;border-radius:999px;font-size:22px;line-height:1;cursor:pointer}
+  .lb .close:hover{background:rgba(255,255,255,.24)}
+  .lb .hint{color:rgba(255,255,255,.6);font-size:12px}
+</style>
+<header>
+  <p class="eyebrow">Lemma · Demo GIFs</p>
+  <h1>Demo Wall</h1>
+  <p class="sub">23 clips, deduplicated from 31. All loop automatically. Click any to enlarge. Total 128 MB.</p>
+</header>
+<main class="grid" id="grid">
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Build an Interactive Physics Model" data-src="Interactive physics model.gif" data-title="Build an Interactive Physics Model">
+      <div class="frame"><img loading="lazy" src="Interactive physics model.gif" alt="Build an Interactive Physics Model"></div>
+      <figcaption><span class="t">Build an Interactive Physics Model</span><span class="tag">Showcase</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Fourier Series Draws the Logo" data-src="lemma-fourier-logo-jacob-no-music.gif" data-title="Fourier Series Draws the Logo">
+      <div class="frame"><img loading="lazy" src="lemma-fourier-logo-jacob-no-music.gif" alt="Fourier Series Draws the Logo"></div>
+      <figcaption><span class="t">Fourier Series Draws the Logo</span><span class="tag">Showcase</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Lemma in Action" data-src="Screen Recording 2026-09-23 at 14.59.10.gif" data-title="Lemma in Action">
+      <div class="frame"><img loading="lazy" src="Screen Recording 2026-09-23 at 14.59.10.gif" alt="Lemma in Action"></div>
+      <figcaption><span class="t">Lemma in Action</span><span class="tag">Showcase</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Bragg Mirror" data-src="lemma-short-08-bragg-mirror.gif" data-title="Bragg Mirror">
+      <div class="frame"><img loading="lazy" src="lemma-short-08-bragg-mirror.gif" alt="Bragg Mirror"></div>
+      <figcaption><span class="t">Bragg Mirror</span><span class="tag">Photonics</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Grating Coupler" data-src="lemma-short-01-grating-coupler.gif" data-title="Grating Coupler">
+      <div class="frame"><img loading="lazy" src="lemma-short-01-grating-coupler.gif" alt="Grating Coupler"></div>
+      <figcaption><span class="t">Grating Coupler</span><span class="tag">Photonics</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Metalens Focusing" data-src="lemma-short-04-metalens.gif" data-title="Metalens Focusing">
+      <div class="frame"><img loading="lazy" src="lemma-short-04-metalens.gif" alt="Metalens Focusing"></div>
+      <figcaption><span class="t">Metalens Focusing</span><span class="tag">Photonics</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Photonic Microring Resonator" data-src="lemma_photonics_microring_16s.gif" data-title="Photonic Microring Resonator">
+      <div class="frame"><img loading="lazy" src="lemma_photonics_microring_16s.gif" alt="Photonic Microring Resonator"></div>
+      <figcaption><span class="t">Photonic Microring Resonator</span><span class="tag">Photonics</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Ring Resonator" data-src="lemma-short-07-ring-resonator.gif" data-title="Ring Resonator">
+      <div class="frame"><img loading="lazy" src="lemma-short-07-ring-resonator.gif" alt="Ring Resonator"></div>
+      <figcaption><span class="t">Ring Resonator</span><span class="tag">Photonics</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Waveguide Coupler in Tidy3D" data-src="lemma-short-06-tidy3d-coupler.gif" data-title="Waveguide Coupler in Tidy3D">
+      <div class="frame"><img loading="lazy" src="lemma-short-06-tidy3d-coupler.gif" alt="Waveguide Coupler in Tidy3D"></div>
+      <figcaption><span class="t">Waveguide Coupler in Tidy3D</span><span class="tag">Photonics</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Double-Slit Interference" data-src="lemma-short-11-double-slit.gif" data-title="Double-Slit Interference">
+      <div class="frame"><img loading="lazy" src="lemma-short-11-double-slit.gif" alt="Double-Slit Interference"></div>
+      <figcaption><span class="t">Double-Slit Interference</span><span class="tag">Quantum</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Particle in a Box" data-src="lemma-short-02-quantum-box.gif" data-title="Particle in a Box">
+      <div class="frame"><img loading="lazy" src="lemma-short-02-quantum-box.gif" alt="Particle in a Box"></div>
+      <figcaption><span class="t">Particle in a Box</span><span class="tag">Quantum</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Quantum Tunnelling" data-src="lemma-short-09-quantum-tunnelling.gif" data-title="Quantum Tunnelling">
+      <div class="frame"><img loading="lazy" src="lemma-short-09-quantum-tunnelling.gif" alt="Quantum Tunnelling"></div>
+      <figcaption><span class="t">Quantum Tunnelling</span><span class="tag">Quantum</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge The Chaotic Double Pendulum" data-src="lemma_physics_double_pendulum_16s.gif" data-title="The Chaotic Double Pendulum">
+      <div class="frame"><img loading="lazy" src="lemma_physics_double_pendulum_16s.gif" alt="The Chaotic Double Pendulum"></div>
+      <figcaption><span class="t">The Chaotic Double Pendulum</span><span class="tag">Dynamics</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge The Lorenz Attractor" data-src="lemma-short-10-lorenz-attractor.gif" data-title="The Lorenz Attractor">
+      <div class="frame"><img loading="lazy" src="lemma-short-10-lorenz-attractor.gif" alt="The Lorenz Attractor"></div>
+      <figcaption><span class="t">The Lorenz Attractor</span><span class="tag">Dynamics</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Cylinder Flow, Start to Finish" data-src="open_cylinder.gif" data-title="Cylinder Flow, Start to Finish">
+      <div class="frame"><img loading="lazy" src="open_cylinder.gif" alt="Cylinder Flow, Start to Finish"></div>
+      <figcaption><span class="t">Cylinder Flow, Start to Finish</span><span class="tag">Fluids</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Flow Past a Cylinder" data-src="lemma-short-05-cylinder-flow.gif" data-title="Flow Past a Cylinder">
+      <div class="frame"><img loading="lazy" src="lemma-short-05-cylinder-flow.gif" alt="Flow Past a Cylinder"></div>
+      <figcaption><span class="t">Flow Past a Cylinder</span><span class="tag">Fluids</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Free-Space Beam Propagation" data-src="lemma-short-richard-deng.gif" data-title="Free-Space Beam Propagation">
+      <div class="frame"><img loading="lazy" src="lemma-short-richard-deng.gif" alt="Free-Space Beam Propagation"></div>
+      <figcaption><span class="t">Free-Space Beam Propagation</span><span class="tag">Optics</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Run a Numerical Simulation" data-src="Run numerical simulations.gif" data-title="Run a Numerical Simulation">
+      <div class="frame"><img loading="lazy" src="Run numerical simulations.gif" alt="Run a Numerical Simulation"></div>
+      <figcaption><span class="t">Run a Numerical Simulation</span><span class="tag">Numerics</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Solve the Heat Equation" data-src="lemma_short_heat-equation-solve.gif" data-title="Solve the Heat Equation">
+      <div class="frame"><img loading="lazy" src="lemma_short_heat-equation-solve.gif" alt="Solve the Heat Equation"></div>
+      <figcaption><span class="t">Solve the Heat Equation</span><span class="tag">Numerics</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Cell Mitosis" data-src="lemma-short-16-mitosis-v3-daftpunk-farout-cue12.gif" data-title="Cell Mitosis">
+      <div class="frame"><img loading="lazy" src="lemma-short-16-mitosis-v3-daftpunk-farout-cue12.gif" alt="Cell Mitosis"></div>
+      <figcaption><span class="t">Cell Mitosis</span><span class="tag">Biology</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Reproduce a Paper&#x27;s Figure" data-src="lemma-short-03-reproduce-paper.gif" data-title="Reproduce a Paper&#x27;s Figure">
+      <div class="frame"><img loading="lazy" src="lemma-short-03-reproduce-paper.gif" alt="Reproduce a Paper&#x27;s Figure"></div>
+      <figcaption><span class="t">Reproduce a Paper&#x27;s Figure</span><span class="tag">Workflow</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Turn a Paper into a Digital Twin" data-src="lemma_paper_digital_twin_16s.gif" data-title="Turn a Paper into a Digital Twin">
+      <div class="frame"><img loading="lazy" src="lemma_paper_digital_twin_16s.gif" alt="Turn a Paper into a Digital Twin"></div>
+      <figcaption><span class="t">Turn a Paper into a Digital Twin</span><span class="tag">Workflow</span></figcaption>
+    </figure>
+    <figure class="card" tabindex="0" role="button" aria-label="Enlarge Validate a Paper&#x27;s Citations" data-src="lemma_reference_validation_16s.gif" data-title="Validate a Paper&#x27;s Citations">
+      <div class="frame"><img loading="lazy" src="lemma_reference_validation_16s.gif" alt="Validate a Paper&#x27;s Citations"></div>
+      <figcaption><span class="t">Validate a Paper&#x27;s Citations</span><span class="tag">Workflow</span></figcaption>
+    </figure>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged clip">
+  <button class="close" id="lbClose" aria-label="Close">&times;</button>
+  <img id="lbImg" src="" alt="">
+  <div class="cap" id="lbCap"></div>
+  <div class="hint">Click anywhere or press Esc to close</div>
+</div>
+
+<script>
+  (function(){
+    var lb=document.getElementById('lb'), img=document.getElementById('lbImg'),
+        cap=document.getElementById('lbCap'), grid=document.getElementById('grid');
+    function open(card){
+      img.src=card.getAttribute('data-src');
+      img.alt=card.getAttribute('data-title');
+      cap.textContent=card.getAttribute('data-title');
+      lb.classList.add('open'); document.body.style.overflow='hidden';
+    }
+    function close(){ lb.classList.remove('open'); img.src=''; document.body.style.overflow=''; }
+    grid.addEventListener('click', function(e){
+      var card=e.target.closest('.card'); if(card) open(card);
+    });
+    grid.addEventListener('keydown', function(e){
+      if((e.key==='Enter'||e.key===' ') && e.target.classList.contains('card')){ e.preventDefault(); open(e.target); }
+    });
+    lb.addEventListener('click', close);
+    document.getElementById('lbClose').addEventListener('click', function(e){ e.stopPropagation(); close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+  })();
+</script>

@@ -151,7 +151,7 @@
   <video id="lbVid" loop playsinline controls></video>
   <div class="cap" id="lbCap"></div>
   <div class="share" id="lbShare">
-    <button id="lbCopy" type="button">Copy GIF link</button>
+    <button id="lbShareBtn" type="button">Share GIF</button>
     <a id="lbDl" download>Download GIF</a>
     <span class="msg" id="lbMsg"></span>
   </div>
@@ -161,13 +161,21 @@
   (function(){
     var lb=document.getElementById('lb'), vid=document.getElementById('lbVid'),
         cap=document.getElementById('lbCap'), grid=document.getElementById('grid');
-    var copyBtn=document.getElementById('lbCopy'), dlLink=document.getElementById('lbDl'), msg=document.getElementById('lbMsg'), curGif='';
-    function setGif(c){ var name=c.getAttribute('data-src').replace(/\.mp4$/,''); var rel='gifs/'+name+'.gif';
-      curGif=new URL(rel, location.href).href; dlLink.href=rel; dlLink.setAttribute('download', name+'.gif'); msg.textContent=''; }
-    copyBtn.addEventListener('click', function(e){ e.stopPropagation();
-      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(curGif).then(function(){msg.textContent='Link copied';setTimeout(function(){msg.textContent='';},1800);}).catch(function(){ prompt('Copy this GIF link:', curGif); }); }
-      else { prompt('Copy this GIF link:', curGif); } });
+    var shareBtn=document.getElementById('lbShareBtn'), dlLink=document.getElementById('lbDl'), msg=document.getElementById('lbMsg'),
+        curRel='', curName='', curTitle='';
+    function setGif(c){ curName=c.getAttribute('data-src').replace(/\.mp4$/,''); curRel='gifs/'+curName+'.gif';
+      curTitle=c.getAttribute('data-title'); dlLink.href=curRel; dlLink.setAttribute('download', curName+'.gif'); msg.textContent=''; }
+    function fallbackDownload(){ var a=document.createElement('a'); a.href=curRel; a.download=curName+'.gif';
+      document.body.appendChild(a); a.click(); a.remove(); msg.textContent='Saved \u2014 drag into WhatsApp'; }
+    shareBtn.addEventListener('click', function(e){ e.stopPropagation(); msg.textContent='Preparing\u2026';
+      fetch(curRel).then(function(r){return r.blob();}).then(function(blob){
+        var file=new File([blob], curName+'.gif', {type:'image/gif'});
+        if(navigator.canShare && navigator.canShare({files:[file]})){
+          return navigator.share({files:[file], title:curTitle}).then(function(){msg.textContent='';});
+        } else { fallbackDownload(); }
+      }).catch(function(){ fallbackDownload(); }); });
     dlLink.addEventListener('click', function(e){ e.stopPropagation(); });
+
 
     var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target.querySelector('video');if(!v)return;
       if(e.isIntersecting){v.play().catch(function(){});}else{v.pause();}});},{rootMargin:'200px'});
